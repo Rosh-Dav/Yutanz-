@@ -132,17 +132,17 @@ Future<void> loadCommentsAndAnalyze(String videoId, {bool forceRefresh = false})
   // Analyze sentiment
   // Analyze sentiment (changed to async and uses backend)
 Future<void> _analyzeSentiment() async {
-  // Try backend API first (VADER + Naive Bayes ensemble on HF Space)
+  // Try backend API first (RoBERTa fine-tuned on YouTube comments)
   if (SentimentApiService.isConfigured) {
     try {
-      print('🌐 Trying backend sentiment API...');
+      debugPrint('🌐 Trying backend sentiment API...');
       _sentimentAnalysis = await _sentimentApi.analyze(_comments);
-      _sentimentSource = 'ML Backend (VADER + Naive Bayes)';
-      print('✅ Used backend sentiment analysis');
+      _sentimentSource = 'RoBERTa AI (roshan050/yt-sentiment-roberta)';
+      debugPrint('✅ Used backend sentiment analysis');
       _wordFrequency = _sentimentService.getWordFrequency(_comments);
       return;
     } catch (e) {
-      print('⚠️ Backend API failed ($e), falling back to local analysis...');
+      debugPrint('⚠️ Backend API failed ($e), falling back to local analysis...');
     }
   }
 

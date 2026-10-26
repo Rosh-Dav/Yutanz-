@@ -4,6 +4,8 @@
 *.pyc
 *.swp
 .DS_Store
+Thumbs.db
+[Dd]esktop.ini
 .atom/
 .build/
 .buildlog/
@@ -34,21 +36,49 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
-# Environment & Secrets (Never commit secrets to Git)
+
+# Android & iOS Local Machine Properties (Contains user local paths)
+local.properties
+**/android/local.properties
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Flutter/ephemeral/
+
+# Environment, Secrets & Credentials (Never commit secrets to Git)
 .env
 .env.*
 !.env.example
 *.key
 *.keystore
 *.jks
+key.properties
+*.pem
+*.cer
+*.crt
+*.p8
+*.p12
+google-services.json
+GoogleService-Info.plist
+client_secret*.json
+credentials.json
+token.json
+token.pickle
+.hf_token
 
-# Python / Backend
+# Python & Jupyter Backend
 __pycache__/
 *.py[cod]
+*$py.class
 .venv/
+venv/
+env/
+ENV/
 backend/.venv/
+backend/venv/
 backend/__pycache__/
 backend/metrics.json
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
 
 # Symbolication related
 app.*.symbols
@@ -60,3 +90,4 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+

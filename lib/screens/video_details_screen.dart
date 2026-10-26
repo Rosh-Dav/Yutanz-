@@ -471,7 +471,7 @@ const SizedBox(height: 16),
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        'AI-powered VADER + Naive Bayes analysis',
+                        'Fine-tuned RoBERTa AI analysis',
                         style: TextStyle(
                           color: Colors.white.withOpacity(0.75),
                           fontSize: 12,

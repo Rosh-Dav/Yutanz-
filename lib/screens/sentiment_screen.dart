@@ -91,7 +91,7 @@ class _SentimentScreenState extends State<SentimentScreen> {
             ),
             const SizedBox(height: 12),
             Text(
-              'Discover how your audience feels about any video using AI-powered VADER + Naive Bayes sentiment detection.',
+              'Discover how your audience feels about any video using AI-powered RoBERTa sentiment detection (fine-tuned on YouTube comments).',
               style: TextStyle(fontSize: 14, color: Colors.grey[400], height: 1.6),
               textAlign: TextAlign.center,
             ),
@@ -188,7 +188,7 @@ class _SentimentScreenState extends State<SentimentScreen> {
             ),
             const SizedBox(height: 8),
             Text(
-              'Powered by VADER + Naive Bayes ML',
+              'Powered by fine-tuned RoBERTa AI (initial start may take ~30s)',
               style: TextStyle(color: Colors.grey[600], fontSize: 12),
             ),
           ],
