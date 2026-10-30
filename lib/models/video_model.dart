@@ -51,8 +51,8 @@ class Video {
             snippet['thumbnails']?['medium']?['url'] ??
             snippet['thumbnails']?['default']?['url']) as String? ?? '')
         : (json['thumbnail'] as String? ?? '');
-    final publishedAtStr = snippet != null ? snippet['publishedAt'] as String : json['publishedAt'] as String;
-    final publishedAt = DateTime.parse(publishedAtStr);
+    final publishedAtStr = snippet != null ? snippet['publishedAt'] as String? : json['publishedAt'] as String?;
+    final publishedAt = publishedAtStr != null ? (DateTime.tryParse(publishedAtStr) ?? DateTime.now()) : DateTime.now();
     final viewCount = snippet != null
         ? (int.tryParse(statistics['viewCount'] as String? ?? '0') ?? 0)
         : (json['viewCount'] as int? ?? 0);

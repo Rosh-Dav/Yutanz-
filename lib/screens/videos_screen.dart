@@ -654,7 +654,9 @@ class _ShortCard extends StatelessWidget {
                         child: Text(
                           video.likesHidden
                               ? 'N/A'
-                              : '${video.engagementRate!.toStringAsFixed(1)}%',
+                              : (video.engagementRate != null
+                                  ? '${video.engagementRate!.toStringAsFixed(1)}%'
+                                  : 'N/A'),
                           style: TextStyle(
                             color: _engagementColor(video.engagementRate),
                             fontSize: 10,

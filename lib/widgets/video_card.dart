@@ -150,7 +150,9 @@ class VideoCard extends StatelessWidget {
                           child: Text(
                             video.likesHidden
                                 ? 'Likes Hidden (Engagement N/A)'
-                                : 'Engagement: ${video.engagementRate!.toStringAsFixed(2)}%',
+                                : (video.engagementRate != null
+                                    ? 'Engagement: ${video.engagementRate!.toStringAsFixed(2)}%'
+                                    : 'Engagement: N/A'),
                             style: TextStyle(
                               fontSize: 10,
                               color: video.likesHidden

@@ -47,7 +47,9 @@ class _InsightsScreenState extends State<InsightsScreen> {
               Expanded(
                 child: StatCard(
                   title: 'Avg Likes',
-                  value: formatNumber(analytics.averageLikesPerVideo.toInt()),
+                  value: formatNumber(analytics.averageLikesPerVideo.isFinite
+                      ? analytics.averageLikesPerVideo.toInt()
+                      : 0),
                   icon: Icons.thumb_up,
                   color: Colors.orange,
                   subtitle: 'per video',
@@ -57,7 +59,9 @@ class _InsightsScreenState extends State<InsightsScreen> {
               Expanded(
                 child: StatCard(
                   title: 'Avg Comments',
-                  value: formatNumber(analytics.averageCommentsPerVideo.toInt()),
+                  value: formatNumber(analytics.averageCommentsPerVideo.isFinite
+                      ? analytics.averageCommentsPerVideo.toInt()
+                      : 0),
                   icon: Icons.comment,
                   color: Colors.purple,
                   subtitle: 'per video',
@@ -716,9 +720,13 @@ class _InsightsScreenState extends State<InsightsScreen> {
                 default:
                   metricValue = video.likesHidden
                       ? 'N/A'
-                      : '${video.engagementRate!.toStringAsFixed(2)}%';
+                      : (video.engagementRate != null
+                          ? '${video.engagementRate!.toStringAsFixed(2)}%'
+                          : 'N/A');
                   metricIcon = Icons.trending_up;
-                  metricColor = video.likesHidden ? Colors.grey : Colors.green;
+                  metricColor = video.likesHidden || video.engagementRate == null
+                      ? Colors.grey
+                      : Colors.green;
                   break;
               }
 

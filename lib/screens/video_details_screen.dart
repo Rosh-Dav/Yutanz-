@@ -142,7 +142,9 @@ class VideoDetailsScreen extends StatelessWidget {
                     'Engagement Rate',
                     video.likesHidden
                         ? 'N/A (Likes Hidden)'
-                        : '${video.engagementRate!.toStringAsFixed(2)}%',
+                        : (video.engagementRate != null
+                            ? '${video.engagementRate!.toStringAsFixed(2)}%'
+                            : 'N/A'),
                     Icons.trending_up,
                     _getEngagementColor(video.engagementRate),
                   ),
@@ -192,7 +194,11 @@ class VideoDetailsScreen extends StatelessWidget {
               Expanded(
                 child: StatCard(
                   title: 'Engagement',
-                  value: video.likesHidden ? 'N/A' : '${video.engagementRate!.toStringAsFixed(2)}%',
+                  value: video.likesHidden
+                      ? 'N/A'
+                      : (video.engagementRate != null
+                          ? '${video.engagementRate!.toStringAsFixed(2)}%'
+                          : 'N/A'),
                   icon: Icons.trending_up,
                   color: _getEngagementColor(video.engagementRate),
                 ),

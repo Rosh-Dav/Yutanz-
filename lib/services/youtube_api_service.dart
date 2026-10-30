@@ -43,6 +43,7 @@ class YouTubeApiService {
 
   // Fetch ALL video IDs from uploads playlist (paginates through all pages)
   Future<List<String>> fetchVideoIds(String playlistId, {int maxResults = 50}) async {
+    if (playlistId.isEmpty) return [];
     try {
       final List<String> allVideoIds = [];
       String? nextPageToken;

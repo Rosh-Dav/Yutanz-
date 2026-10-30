@@ -650,7 +650,7 @@ String _formatSubscriberCount(int count) {
               Expanded(
                 child: StatCard(
                   title: 'Avg Likes',
-                  value: analytics != null
+                  value: analytics != null && analytics.averageLikesPerVideo.isFinite
                       ? Helpers.formatNumber(analytics.averageLikesPerVideo.toInt())
                       : '0',
                   icon: Icons.thumb_up,
@@ -694,7 +694,9 @@ String _formatSubscriberCount(int count) {
                     _buildQuickInsightItem(
                       'Avg Views/Video',
                       Helpers.formatNumber(
-                          (channel.totalViews / channel.videoCount).round()),
+                          channel.videoCount > 0
+                              ? (channel.totalViews / channel.videoCount).round()
+                              : 0),
                       Icons.visibility,
                       Colors.green,
                     ),
